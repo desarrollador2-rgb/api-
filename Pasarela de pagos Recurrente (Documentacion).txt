@@ -1,0 +1,52 @@
+📄 Integración Recurrente → LabsChats
+Flujo
+
+Usuario ingresa:
+
+Nombre → #product_name
+
+Monto (Q) → #amount_q
+
+Conversión:
+#amount_pay = #amount_q * 100 (centavos)
+
+API Request
+
+POST https://app.recurrente.com/api/checkouts
+
+Headers:
+
+X-PUBLIC-KEY: pk_test_xxx
+
+X-SECRET-KEY: sk_test_xxx
+
+Content-Type: application/json
+
+Accept: application/json
+
+Body:
+
+{
+  "items": [
+    {
+      "name": "#product_name",
+      "currency": "GTQ",
+      "amount_in_cents": #amount_pay,
+      "quantity": 1
+    }
+  ],
+  "success_url": "https://labschats.com/success",
+  "cancel_url": "https://labschats.com/cancel"
+}
+
+
+Respuesta API:
+
+Devuelve checkout_url
+
+Guardado en #payment_url
+
+Bot responde:
+
+Aquí tienes tu link de pago 👇
+#payment_url
